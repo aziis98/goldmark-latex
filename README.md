@@ -18,7 +18,9 @@ The default config uses `$...$` for inline math and `$$...$$` for math blocks an
 
 ```go
 markdown := goldmark.New(
-    goldmark.WithExtensions(latex.DefaultConfig),
+    goldmark.WithExtensions(
+        latex.NewLatex(),
+    ),
 )
 ```
 
@@ -39,9 +41,13 @@ markdown := goldmark.New(
 
 ## TODOs
 
--   [ ] I ported this directly from `goldmark-mathjax` but I read too late that it is based on goldmark code for [fenced blocks](https://github.com/yuin/goldmark/blob/master/parser/fcode_block.go) and [code spans](https://github.com/yuin/goldmark/blob/master/parser/code_span.go). Sometime I'll update the parser code to not use the deprecated `util.DedentPosition` and be more similar to those two files.
+-   [ ] I ported this directly from `goldmark-mathjax` but I read too late that it was based on old goldmark code for [fenced blocks](https://github.com/yuin/goldmark/blob/master/parser/fcode_block.go) and [code spans](https://github.com/yuin/goldmark/blob/master/parser/code_span.go) that in the meantime change a bit.
 
--   [ ] The old `goldmark-mathjax` actually had some code that compiled latex to SVGs using `pdflatex` and `pdf2svg`. Something interesting would be to use the "tex renderer" just for block latex nodes (rendering inline math nodes to SVGs has the problem of not being able to wrap images along lines, for those falling back to KaTeX or MathJax might be the best option)
+    Sometime I'll update the parser code to not use the deprecated `util.DedentPosition`.
+
+-   [ ] The old `goldmark-mathjax` actually had some code that compiled latex to SVGs using `pdflatex` and `pdf2svg`.
+
+    Something interesting could be to use the "tex renderer" just for math blocks. Rendering inline math to SVGs has the problem that images can't wrap along lines, for those falling back to KaTeX or MathJax might be the best option.
 
 ## License
 
