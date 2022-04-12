@@ -6,6 +6,8 @@
 
 This is just a fork of [litao91/goldmark-mathjax](https://github.com/litao91/goldmark-mathjax) with more options for parsing and rendering. There are also some minor modifications (and I hope to modernizing that code in future commits).
 
+(I decided to not make a direct fork because the name was misleading in referencing [MathJax](https://www.mathjax.org/) as the project isn't really used anywhere concretely inside the project. The goldmark extension just parsed latex code and doesn't even add a CDN link to mathjax or something like that)
+
 ## Installation
 
 ```
